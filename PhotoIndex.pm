@@ -1,6 +1,6 @@
 ####################
 #
-# PhotoIndex.pm,v 1.14 2001/10/29 18:05:28 myneid Exp
+# PhotoIndex.pm,v 1.15 2002/02/11 23:01:17 myneid Exp
 #
 # xTODO:
 #	add writing of sizes of images to index file
@@ -27,7 +27,7 @@ require AutoLoader;
 @EXPORT = qw(
 	
 );
-$VERSION = '1.14';
+$VERSION = '1.15';
 
 
 sub AUTOLOAD {
@@ -343,6 +343,7 @@ sub create_thumbnail($$)
 	my $newheight = $height * $percent;
 	$image->Scale(width=>"$newwidth", height=>"$newheight");
 	$image->Write($dest_file) ;
+	undef $image;
 }
 
 sub individual_template($)

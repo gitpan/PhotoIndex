@@ -1,26 +1,18 @@
-Revision history for Perl extension Apache::PhotoIndex.
-
-Changes,v
-Revision 1.1  2001/10/26 17:14:36  myneid
-Modified to proper perl module syntax
-
-
-? backup
-? PhotoIndex
-? Apache
-? temp
-? old
 
 RCS file: /home/cvsroot/PhotoIndex/Changes,v
 Working file: Changes
-head: 1.1
+head: 1.2
 branch:
 locks: strict
 access list:
 symbolic names:
 keyword substitution: kv
-total revisions: 1;	selected revisions: 1
+total revisions: 2;	selected revisions: 2
 description:
+----------------------------
+revision 1.2
+date: 2001/10/26 18:11:10;  author: myneid;  state: Exp;  lines: +168 -1
+Damn it i cant get this version number stuff down
 ----------------------------
 revision 1.1
 date: 2001/10/26 17:14:36;  author: myneid;  state: Exp;
@@ -61,7 +53,7 @@ Modified to proper perl module syntax
 
 RCS file: /home/cvsroot/PhotoIndex/PhotoIndex.pm,v
 Working file: PhotoIndex.pm
-head: 1.9
+head: 1.15
 branch:
 locks: strict
 access list:
@@ -69,8 +61,32 @@ symbolic names:
 	dev: 1.1.1.1
 	myneid: 1.1.1
 keyword substitution: kv
-total revisions: 10;	selected revisions: 10
+total revisions: 16;	selected revisions: 16
 description:
+----------------------------
+revision 1.15
+date: 2002/02/11 23:01:17;  author: myneid;  state: Exp;  lines: +3 -2
+added an undef to the $image of type Image::Magick because it doesnt destroy memory
+----------------------------
+revision 1.14
+date: 2001/10/29 18:05:28;  author: myneid;  state: Exp;  lines: +41 -2
+Finished documentation
+----------------------------
+revision 1.13
+date: 2001/10/26 22:50:07;  author: myneid;  state: Exp;  lines: +29 -11
+Integral update, part done with documentation
+----------------------------
+revision 1.12
+date: 2001/10/26 21:13:28;  author: myneid;  state: Exp;  lines: +2 -2
+Ok i tghink i got it this time, man i'm dumb
+----------------------------
+revision 1.11
+date: 2001/10/26 18:11:38;  author: myneid;  state: Exp;  lines: +3 -3
+stuff
+----------------------------
+revision 1.10
+date: 2001/10/26 18:11:10;  author: myneid;  state: Exp;  lines: +2 -2
+Damn it i cant get this version number stuff down
 ----------------------------
 revision 1.9
 date: 2001/10/26 17:50:37;  author: myneid;  state: Exp;  lines: +2 -2

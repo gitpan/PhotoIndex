@@ -1,0 +1,171 @@
+Revision history for Perl extension Apache::PhotoIndex.
+
+Changes,v
+Revision 1.1  2001/10/26 17:14:36  myneid
+Modified to proper perl module syntax
+
+
+? backup
+? PhotoIndex
+? Apache
+? temp
+? old
+
+RCS file: /home/cvsroot/PhotoIndex/Changes,v
+Working file: Changes
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2001/10/26 17:14:36;  author: myneid;  state: Exp;
+Modified to proper perl module syntax
+=============================================================================
+
+RCS file: /home/cvsroot/PhotoIndex/MANIFEST,v
+Working file: MANIFEST
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2001/10/26 17:14:36;  author: myneid;  state: Exp;
+Modified to proper perl module syntax
+=============================================================================
+
+RCS file: /home/cvsroot/PhotoIndex/Makefile.PL,v
+Working file: Makefile.PL
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2001/10/26 17:14:36;  author: myneid;  state: Exp;
+Modified to proper perl module syntax
+=============================================================================
+
+RCS file: /home/cvsroot/PhotoIndex/PhotoIndex.pm,v
+Working file: PhotoIndex.pm
+head: 1.9
+branch:
+locks: strict
+access list:
+symbolic names:
+	dev: 1.1.1.1
+	myneid: 1.1.1
+keyword substitution: kv
+total revisions: 10;	selected revisions: 10
+description:
+----------------------------
+revision 1.9
+date: 2001/10/26 17:50:37;  author: myneid;  state: Exp;  lines: +2 -2
+Still with the versions
+----------------------------
+revision 1.8
+date: 2001/10/26 17:48:24;  author: myneid;  state: Exp;  lines: +2 -4
+Finalized version numbering
+----------------------------
+revision 1.7
+date: 2001/10/26 17:32:06;  author: myneid;  state: Exp;  lines: +5 -2
+Updated version code
+----------------------------
+revision 1.6
+date: 2001/10/26 17:14:37;  author: myneid;  state: Exp;  lines: +77 -4
+Modified to proper perl module syntax
+----------------------------
+revision 1.5
+date: 2001/10/17 20:22:56;  author: myneid;  state: Exp;  lines: +10 -3
+fixed create_new_index because it was still making the old way
+----------------------------
+revision 1.4
+date: 2001/09/29 00:29:55;  author: myneid;  state: Exp;  lines: +66 -25
+wow a good version of photoindex , description stuff done
+----------------------------
+revision 1.3
+date: 2001/08/25 18:25:00;  author: myneid;  state: Exp;  lines: +22 -9
+Fixored the title and the edit_photos page by puting the edit photo directive in the query string duh!
+modified the style sheet a bit too for the header, although it still needs more modifying
+----------------------------
+revision 1.2
+date: 2001/08/25 07:10:18;  author: myneid;  state: Exp;  lines: +59 -20
+Ugh, still working on edit_photos, i added the code to do teh directory indexing with edit_photos/ at the end of the uri, not working yet though, i need to change the uri or something or each img tag  whatever i'm tired, fix it.
+----------------------------
+revision 1.1
+date: 2001/08/16 03:43:05;  author: myneid;  state: Exp;
+branches:  1.1.1;
+Initial revision
+----------------------------
+revision 1.1.1.1
+date: 2001/08/16 03:43:05;  author: myneid;  state: Exp;  lines: +0 -0
+PhotoIndex.pm mod_perl handler for having a photo album Initial Import
+=============================================================================
+
+RCS file: /home/cvsroot/PhotoIndex/PhotoIndex.xs,v
+Working file: PhotoIndex.xs
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2001/10/26 18:04:19;  author: myneid;  state: Exp;
+added PhotoIndex.xs duh!
+=============================================================================
+
+RCS file: /home/cvsroot/PhotoIndex/install.sh,v
+Working file: install.sh
+head: 1.1
+branch: 1.1.1
+locks: strict
+access list:
+symbolic names:
+	dev: 1.1.1.1
+	myneid: 1.1.1
+keyword substitution: kv
+total revisions: 2;	selected revisions: 2
+description:
+----------------------------
+revision 1.1
+date: 2001/08/16 03:43:05;  author: myneid;  state: Exp;
+branches:  1.1.1;
+Initial revision
+----------------------------
+revision 1.1.1.1
+date: 2001/08/16 03:43:05;  author: myneid;  state: Exp;  lines: +0 -0
+PhotoIndex.pm mod_perl handler for having a photo album Initial Import
+=============================================================================
+
+RCS file: /home/cvsroot/PhotoIndex/test.pl,v
+Working file: test.pl
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2001/10/26 17:14:37;  author: myneid;  state: Exp;
+Modified to proper perl module syntax
+=============================================================================

@@ -1,6 +1,6 @@
 ####################
 #
-# PhotoIndex.pm,v 1.15 2002/02/11 23:01:17 myneid Exp
+# PhotoIndex.pm,v 1.20 2002/07/10 23:04:16 myneid Exp
 #
 # xTODO:
 #	add writing of sizes of images to index file
@@ -13,9 +13,10 @@ use strict;
 use Carp;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK $AUTOLOAD);
 use Apache::Constants qw(:common OPT_INDEXES DECLINE_CMD REDIRECT DIR_MAGIC_TYPE);
-use Image::Magick;
+#use Image::Magick;
+use Imager;
 use Apache;
-use CGI::Carp qw(carpout fatalsToBrowser);
+use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
 require Exporter;
 require DynaLoader;
 require AutoLoader;
@@ -27,7 +28,7 @@ require AutoLoader;
 @EXPORT = qw(
 	
 );
-$VERSION = '1.15';
+$VERSION = '1.20';
 
 
 sub AUTOLOAD {
@@ -92,6 +93,7 @@ sub individual_page($)
 	$r->send_http_header('text/html');
 	
 	#using index
+	no strict 'refs';
 	my @index = get_directory_index($r, $r->document_root, $r->uri);
 	my $image = $index[$index]->{name};
 	my $previmage = ($index == 1) ? 'index.html' : $index[$previndex]->{name};
@@ -143,10 +145,11 @@ sub get_directory_index($$$)
 		}
 	}
 
-	if(!-e "$documentroot$uri/.index" || -z "$documentroot$uri/.index")
-	{
-		create_new_index_file($r, $documentroot, $uri);
-	}
+#commented out because this function is called in create_new_index_file() and was hence an infinate loop
+#	if(!-e "$documentroot$uri/.index" || -z "$documentroot$uri/.index")
+#	{
+#		create_new_index_file($r, $documentroot, $uri);
+#	}
 	open(IDX, "<$documentroot$uri/.index") || warn "$documentroot$uri/.index $!";
 	my $i=0;
 	while(<IDX>)
@@ -205,7 +208,7 @@ sub directory_listing($$)
 	my (@images, %elements);
 	if(!-e "$documentroot$uri$thumbnaildir")
 	{
-		system("mkdir $documentroot$uri$thumbnaildir") || die "$documentroot$uri$thumbnaildir: $!";
+		system("mkdir $documentroot$uri$thumbnaildir") ;
 	}
 
 	my $subr = $r->lookup_file($documentroot . $uri .  $_);
@@ -215,6 +218,12 @@ sub directory_listing($$)
 	$elements{formtag} = '<form method=POST action=?save_index>';
 
 	#this index is only for the title but should be used for descriptions
+
+        if(!-e "$documentroot$uri/.index")
+        {
+                create_new_index_file($r, $documentroot, $uri, @images);
+        }
+
 	my @index = get_directory_index($r, $documentroot, $uri);
 	$elements{title} = $index[0] || 'Photo Gallery';
 	if($edit_flag)
@@ -333,6 +342,20 @@ sub create_new_index_file($$$;\@)
 
 
 sub create_thumbnail($$)
+{
+	my($source_file, $dest_file) = @_;
+	my $percent = 20;
+	my  $image = Imager->new;
+	$image->read(file=>$source_file) or die "readerror on \"$source_file\": ".$image->{ERRSTR}."\n";
+	my %opts=(scalefactor=>$percent/100);
+	my $thumb = $image->scale(%opts) or die "scaleerror on \"$source_file\": ".$image->{ERRSTR}."\n";
+	$thumb->filter(type=>'autolevels');
+	
+	$thumb->write(file=>$dest_file) or die "writeerror on \"$source_file\": ".$image->{ERRSTR}."\n";
+
+	undef $image;
+}
+sub create_thumbnail_imagemagick($$)
 {
 	my($source_file, $dest_file) = @_;
 	my $percent = .20;
@@ -566,7 +589,7 @@ PerlModule Apache::PhotoIndex
 PerlHandler Apache::PhotoIndex
 
 PerlModule Apache::Icon
-PerlModule Image::Magick
+PerlModule Imager
 
 =head1 DESCRIPTION
 
@@ -576,7 +599,7 @@ putting different template files in different directories to make different look
 =head1 USAGE
 
 In your apache conf or .htaccess file put what is in the synopsys
-Make sure that you have image magick installed http://www.simplesystems.org/ImageMagick/www/perl.html
+Make sure that you have Imager installed, this can be instelled from cpan or found at http://www.eecs.umich.edu/~addi/perl/Imager/
 
 The displayed pages are done by using templates that you may create your own template or use the default.
 There are two different typs of templages and two ways to create your own template:
@@ -634,6 +657,6 @@ tanguy@decourson.com (myneid)
 
 =head1 SEE ALSO
 
-perl(1), Image::Magick.
+perl(1), Imager.
 
 =cut
